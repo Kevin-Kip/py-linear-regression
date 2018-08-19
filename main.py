@@ -25,10 +25,6 @@ def m_and_b(x_array, y_array):
     return m, b
 
 
-def squared_error(expected_output, calculated_output):
-    return sum((expected_output - calculated_output) ** 2)
-
-
 def do_the_math(predict_x):
     m, b = m_and_b(xs, ys)
     regression_line = [(m * x) + b for x in xs]
