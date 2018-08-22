@@ -19,7 +19,7 @@ def m_and_b(x_array, y_array):
     denominator = 0
     for item in range(0, len(x_array)):
         numerator += (x_array[item] - mean_of_x) * (y_array[item] - mean_of_y)
-        denominator += (x_array[item] - mean_of_x) * (x_array[item] - mean_of_x)
+        denominator += (x_array[item] - mean_of_x) ** 2
     m = numerator / denominator
     b = mean_of_y - (m * mean_of_x)
     return m, b
@@ -27,7 +27,12 @@ def m_and_b(x_array, y_array):
 
 def do_the_math(predict_x):
     m, b = m_and_b(xs, ys)
-    regression_line = [(m * x) + b for x in xs]
+    '''All this from line 31 to line 34 can be summarized by line 35'''
+    regression_ys = []
+    for x in xs:
+        y = (m * x) + b
+        regression_ys.append(y)
+        '''regression_line = [(m * x) + b for x in xs]'''
 
     predict_y = (m * predict_x) + b
 
@@ -35,7 +40,7 @@ def do_the_math(predict_x):
 
     plt.scatter(xs, ys)
     plt.scatter(predict_x, predict_y, color='g')
-    plt.plot(xs, regression_line)
+    plt.plot(xs, regression_ys)
     plt.show()
 
 
