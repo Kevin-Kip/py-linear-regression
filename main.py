@@ -44,6 +44,10 @@ def do_the_math(predict_x):
     plt.show()
 
 
+def squared_error(expected, predicted):
+    return sum((predicted - expected) ** 2)
+
+
 if __name__ == '__main__':
     x = float(input('Enter a value of x: '))
     do_the_math(x)
